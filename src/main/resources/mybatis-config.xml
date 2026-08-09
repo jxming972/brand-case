@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+
+    <!-- ========== 一、加载数据库连接属性文件 ========== -->
+    <properties resource="druid.properties"/>
+
+    <!-- ========== 二、实体类别名：pojo 包下所有类直接用类名 ========== -->
+    <typeAliases>
+        <package name="com.itheima.pojo"/>
+    </typeAliases>
+
+    <!-- ========== 三、数据源配置 ========== -->
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <!--
+                POOLED = MyBatis 内置连接池
+                （如果想用 Druid，在 SqlSessionFactoryUtil 里用 Java 代码切换即可）
+            -->
+            <dataSource type="POOLED">
+                <property name="driver"   value="${driverClassName}"/>
+                <property name="url"      value="${url}"/>
+                <property name="username" value="${username}"/>
+                <property name="password" value="${password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <!-- ========== 四、加载 Mapper 映射文件 ========== -->
+    <mappers>
+        <package name="com.itheima.mapper"/>
+    </mappers>
+
+</configuration>
