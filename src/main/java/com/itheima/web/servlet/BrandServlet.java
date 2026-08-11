@@ -108,4 +108,27 @@ public class BrandServlet extends BaseServlet {
         resp.setContentType("text/json;charset=utf-8");
         resp.getWriter().write(jsonString);
     }
+
+    public void deleteById(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        String id0 = req.getParameter("id");
+
+        int id = Integer.parseInt(id0);
+
+        brandService.deleteById(id);
+        resp.getWriter().write("success");
+    }
+
+    public void update(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        req.setCharacterEncoding("UTF-8");
+        BufferedReader br = req.getReader();
+        String params = br.readLine();
+
+        Brand brand = JSON.parseObject(params, Brand.class);
+
+        brandService.update(brand);
+
+        resp.getWriter().write("success");
+    }
 }

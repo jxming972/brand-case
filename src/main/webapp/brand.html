@@ -302,9 +302,10 @@
             submitForm() {
                 this.$refs.brandForm.validate(valid => {
                     if (!valid) return;
-                    axios.post('/brand-case/brand/add', this.brandForm).then(res => {
+                    const url = this.brandForm.id ? '/brand-case/brand/update' : '/brand-case/brand/add';
+                    axios.post(url, this.brandForm).then(res => {
                         if (res.data === 'success') {
-                            this.$message.success('操作成功');
+                            this.$message.success(this.brandForm.id ? '修改成功' : '新增成功');
                             this.dialogVisible = false;
                             this.loadData();
                         } else {
@@ -323,7 +324,7 @@
                     cancelButtonText: '取消',
                     type: 'warning'
                 }).then(() => {
-                    axios.post('/brand-case/brand/deleteById', { id: id }).then(res => {
+                    axios.post('/brand-case/brand/deleteById', null, { params: { id: id } }).then(res => {
                         if (res.data === 'success') {
                             this.$message.success('删除成功');
                             this.loadData();

@@ -26,9 +26,6 @@
     </update>
 
     <!-- ==================== 4. 单个删除 ==================== -->
-    <delete id="deleteById">
-        DELETE FROM tb_brand WHERE id = #{id}
-    </delete>
 
     <!-- ==================== 5. 批量删除 ==================== -->
     <delete id="deleteByIds">

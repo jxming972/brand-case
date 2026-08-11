@@ -19,5 +19,9 @@ public interface BrandService {
     int selectTotalCount();
 
     PageBean<Brand> selectByPageAndCondition(int currentPage, int pageSize, Brand brand);
+
+    void deleteById(int id);
+
+    void update(Brand brand);
 }
 

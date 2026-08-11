@@ -1,10 +1,7 @@
 package com.itheima.mapper;
 
 import com.itheima.pojo.Brand;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.ResultMap;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -34,6 +31,7 @@ public interface BrandMapper {
     /**
      * 4. 根据 ID 删除单个品牌
      */
+    @Delete("delete from tb_brand where id = #{id}")
     void deleteById(int id);
 
     /**
